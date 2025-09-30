@@ -1,20 +1,197 @@
-# september-jam
+# 🌍 World Happiness Prediction Project
 
 TripleTen Code Pudding for September 2025
 
-## Why We Chose This Dataset
+A data science project to **analyze global happiness trends** and **predict Life Ladder scores (0–10)** from social, economic, and health indicators.  
+This project demonstrates hands-on skills in **EDA, feature engineering, regression modeling, hyperparameter tuning, and interpretability**.
+
+---
+
+## 🚀 Project Overview
+
+The aim of this project is to:
+
+- Load and preprocess the **World Happiness Report 2005-2024** dataset
+- Explore relationships between economic, social, and emotional indicators
+- Train regression models (**Linear Regression, XGBoost**) to predict happiness
+- Use **Optuna** for hyperparameter tuning
+- Evaluate model performance with **MAE, RMSE, and R²**
+- Provide a helper function to predict happiness for new country–year inputs
+- Visualize global trends with maps and charts
+
+---
+
+## ❓ Why We Chose This Dataset
 
 We chose the **World Happiness Report dataset** because:
 
-- ✅ **Recent data** – it includes the latest available happiness scores up to **2024**, making the analysis timely and relevant.
-- 🌍 **Global coverage** – the dataset contains data from **~150+ countries**, allowing for broad cross-country comparisons.
-- 📊 **Rich indicators** – in addition to the main **Life Ladder (happiness score)**, it provides key explanatory factors such as:
-  - **Log GDP per capita** (economic prosperity)
-  - **Social support** (community strength)
-  - **Healthy life expectancy at birth** (health outcomes)
-  - **Freedom to make life choices**
-  - **Generosity**
-  - **Perceptions of corruption**
-  - **Positive and Negative affect** (emotional well-being)
+- ✅ **Recent data** – includes happiness scores up to **2024**
+- 🌍 **Global coverage** – ~150+ countries for broad comparisons
+- 📊 **Rich indicators** – beyond the **Life Ladder** (target), it contains:
+  - Log GDP per capita (economic prosperity)
+  - Social support (community strength)
+  - Healthy life expectancy at birth (health outcomes)
+  - Freedom to make life choices
+  - Generosity
+  - Perceptions of corruption
+  - Positive and Negative affect (emotional well-being)
 
-Together, these indicators make the dataset ideal for **exploring global happiness trends** and **building predictive models** to understand what truly drives happiness worldwide.
+Together, these indicators make it ideal for exploring global trends and building predictive models to understand what drives happiness worldwide.
+
+---
+
+## 📦 Features
+
+- Cleaned & preprocessed dataset (150+ countries, 2005–2024)
+- Train/test splits with **time-aware separation**
+- Models:
+  - **Linear Regression** (baseline, interpretable)
+  - **XGBoost** (tree-based regressor with Optuna tuning)
+- Visualizations:
+  - Choropleth world map of happiness
+  - Correlation heatmaps & trends
+- **Prediction function** with SHAP-based explanation of top drivers
+- Metrics: **MAE, RMSE, R²**
+
+---
+
+## 🧠 Technologies
+
+- Python 3
+- pandas, NumPy
+- scikit-learn, XGBoost, Optuna
+- Matplotlib, Seaborn
+- SHAP (interpretability)
+- Streamlit ( demo UI)
+
+---
+
+## 📂 Project Structure
+
+```
+WORLD_HAPPINESS_PREDICTION/
+├── data/
+│   └── World-happiness-report-updated_2024.csv
+├── notebooks/
+│   ├── World_Happiness.ipynb
+│   └── World_Happiness_Optuna.ipynb
+├── src/
+│   ├── data.py         # loading & cleaning
+│   ├── features.py     # preprocessing, scaling
+│   ├── train.py        # training & evaluation
+│   ├── predict.py      # prediction function
+│   ├── viz.py          # plots and maps
+│   └── explain.py      # SHAP explanations
+├── app/
+│   └── streamlit_app.py  # optional demo
+├── requirements.txt
+└── README.md
+```
+## 📊 Dataset
+
+- **Source:** World Happiness Report (compiled indicators, 2005–2024)
+- **Rows:** ~2,300 (country–year observations)
+- **Target:**
+  - `Life Ladder` — Happiness score (0–10)
+
+**Features used:**
+- Log GDP per capita
+- Social support
+- Healthy life expectancy at birth
+- Freedom to make life choices
+- Generosity
+- Perceptions of corruption
+- Positive affect
+- Negative affect
+- year, Country name
+
+---
+
+
+## 📈 Workflow
+
+### 🔹 Data Preparation
+- Handle missing values (drop or impute by year/region)
+- Scale numerical features with **StandardScaler**
+- Train/test split with **time-aware separation**
+
+### 🔹 Exploratory Data Analysis (EDA)
+- Correlation heatmaps
+- Trends over time (2005–2024)
+- Choropleth maps of happiness by country
+
+### 🔹 Modeling
+- **Linear Regression** (baseline)
+- **XGBoost** (nonlinear, feature interactions)
+- **Optuna** hyperparameter tuning
+
+### 🔹 Evaluation
+- Metrics: **MAE, RMSE, R²**
+- Compare against **baseline predictor**
+- Residual analysis across regions and years
+
+### 🔹 Prediction Function
+- **Input:** Python dict or DataFrame with features
+- **Output:** Predicted Life Ladder + top drivers (via SHAP)
+
+---
+
+## 📊 Example Results
+
+| Model              | MAE   | RMSE  | R²   |
+|--------------------|-------|-------|------|
+| Linear Regression  | ~0.55 | ~0.72 | 0.73 |
+| XGBoost (Optuna)   | ~0.43 | ~0.61 | 0.82 |
+
+**Insights:**
+- Social support and GDP per capita are top positive drivers
+- Perceptions of corruption strongly suppress happiness
+- Emotional factors (positive/negative affect) add extra explanatory power
+
+---
+
+## ⚙️ Installation & Usage
+
+### 1. Clone the repository
+```bash
+git clone https://github.com/world-happiness-project.git
+cd world-happiness-project
+```
+2. Install dependencies
+```
+pip install -r requirements.txt
+```
+4. Run Jupyter Notebook
+```
+jupyter notebook notebooks/World_Happiness.ipynb
+```
+6. Run Streamlit App
+```
+streamlit run app/streamlit_app.py
+```
+## 📝 Notes
+
+Happiness is influenced by many non-quantified factors (e.g., governance, culture, conflicts).
+
+Predictions are based only on available indicators.
+
+## Future improvements:
+
+- Add inequality indices, governance measures
+
+- Incorporate regional embeddings
+
+- Time-series forecasting with lag features
+
+## 👥 Project Team
+
+This project was developed by:
+
+- Priti Sagar
+
+- Ken
+
+- Sohini
+
+- Ryan
+
