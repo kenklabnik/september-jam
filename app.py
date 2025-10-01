@@ -85,6 +85,15 @@ feature_list = ['Log GDP per capita',
 # load dataset
 data = pd.read_csv("World-happiness-report-updated_2024.csv",  encoding="latin1")
 
+# standard-scaled version of data for charts where that's appropriate
+scaler = StandardScaler()
+scaled_data = pd.DataFrame(
+    scaler.fit_transform(data[feature_list]),
+    columns=feature_list,
+    index=data.index)
+scaled_data['Country name'] = data['Country name']
+scaled_data['year'] = data['year']
+
 # TODO preprocess data
 
 # instantiate Plotly Dash app
@@ -193,21 +202,10 @@ def update_full_stats_graph(country, features):
     if not country:
         return px.line(title="Select a country.")
     
-    sample_country = data[data["Country name"].isin([country])]
-    sample_country_scalable = sample_country.drop(['Country name', 'year'], axis=1)
-
-    scaler = StandardScaler()
-    scaled_data = pd.DataFrame(
-        scaler.fit_transform(sample_country_scalable),
-        columns=sample_country_scalable.columns,
-        index=sample_country_scalable.index)
-    
-    scaled_data['Country name'] = sample_country['Country name']
-    scaled_data['year'] = sample_country['year']
-
+    sample_country = scaled_data[scaled_data["Country name"].isin([country])]   
 
     fig = px.line(
-        scaled_data,
+        sample_country,
         x='year',
         y=features,
         title="Happiness Trends Over Time: {}".format(country)
