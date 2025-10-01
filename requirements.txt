@@ -1,0 +1,16 @@
+# Core data science stack
+pandas
+numpy
+scikit-learn
+
+# Visualization
+matplotlib
+seaborn
+plotly  # for interactive plots
+
+
+# Machine learning / modeling
+xgboost
+optuna   # for hyperparameter tuning
+
+
