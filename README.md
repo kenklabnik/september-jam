@@ -1,8 +1,6 @@
-# 🌍 september-jam
+# 🌍 World Happiness Prediction Project
 
 TripleTen Code Pudding for September 2025
-
-## World Happiness Prediction with Machine Learning
 
 A data science project to **analyze global happiness trends** and **predict Life Ladder scores (0–10)** from social, economic, and health indicators.  
 This project demonstrates hands-on skills in **EDA, feature engineering, regression modeling, hyperparameter tuning, and interpretability**.
@@ -70,7 +68,7 @@ Together, these indicators make it ideal for exploring global trends and buildin
 
 ## 📂 Project Structure
 
-````plaintext
+```
 WORLD_HAPPINESS_PREDICTION/
 ├── data/
 │   └── World-happiness-report-updated_2024.csv
@@ -88,7 +86,7 @@ WORLD_HAPPINESS_PREDICTION/
 │   └── streamlit_app.py  # optional demo
 ├── requirements.txt
 └── README.md
-
+```
 ## 📊 Dataset
 
 - **Source:** World Happiness Report (compiled indicators, 2005–2024)
@@ -108,6 +106,7 @@ WORLD_HAPPINESS_PREDICTION/
 - year, Country name
 
 ---
+
 
 ## 📈 Workflow
 
@@ -157,38 +156,42 @@ WORLD_HAPPINESS_PREDICTION/
 ```bash
 git clone https://github.com/world-happiness-project.git
 cd world-happiness-project
+```
 2. Install dependencies
+```
 pip install -r requirements.txt
-
-3. Run Jupyter Notebook
+```
+4. Run Jupyter Notebook
+```
 jupyter notebook notebooks/World_Happiness.ipynb
-
-4. Run Streamlit App
+```
+6. Run Streamlit App
+```
 streamlit run app/streamlit_app.py
-
-📝 Notes
+```
+## 📝 Notes
 
 Happiness is influenced by many non-quantified factors (e.g., governance, culture, conflicts).
 
 Predictions are based only on available indicators.
 
-Future improvements:
+## Future improvements:
 
-Add inequality indices, governance measures
+- Add inequality indices, governance measures
 
-Incorporate regional embeddings
+- Incorporate regional embeddings
 
-Time-series forecasting with lag features
+- Time-series forecasting with lag features
 
-👥 Project Team
+## 👥 Project Team
 
 This project was developed by:
 
-Priti Sagar
+- Priti Sagar
 
-Ken
+- Ken
 
-Sohini
+- Sohini
 
-Ryan
-````
+- Ryan
+
