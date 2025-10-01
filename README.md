@@ -189,9 +189,9 @@ This project was developed by:
 
 - Priti Sagar
 
-- Ken
+- Ken Klabnik
 
-- Sohini
+- Sohini Tomar
 
-- Ryan
+- Ryan Roberts
 
