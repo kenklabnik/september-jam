@@ -94,7 +94,16 @@ scaled_data = pd.DataFrame(
 scaled_data['Country name'] = data['Country name']
 scaled_data['year'] = data['year']
 
-# TODO preprocess data
+# create correlation heatmap for later display
+def display_corr_heatmap():
+    corr = data[["Life Ladder", "Log GDP per capita", "Social support",
+           "Healthy life expectancy at birth", "Freedom to make life choices",
+           "Generosity", "Perceptions of corruption",
+           "Positive affect", "Negative affect"]].corr()
+    
+    corr_truncated = corr.map(lambda x: truncate(x, 2))
+    
+    return px.imshow(corr_truncated, text_auto=True, aspect="auto")
 
 # instantiate Plotly Dash app
 app = Dash(__name__, external_stylesheets=[dbc.themes.SOLAR])
@@ -157,6 +166,20 @@ app.layout = dbc.Container([
             ),
             dcc.Graph(id="full-stats-graph")
         ])
+    ]),
+    dbc.Row([
+        dbc.Col([
+            html.H2("Correlation Heatmap", className="text-center", style=SUBHEADER_STYLE),
+            html.P("""
+                   See the degree to which different features are correlated here. A 1 indicates a full 1:1 correlation, a -1 indicates inverse correlation, 
+                   a 0 indicates no correlation, and decimal values indicate correlations that are weak when close to 0 and strong when far from 0.
+                   """,
+                   className="text-start fs-5", style=TEXT_BODY_STYLE),
+            dbc.Col([
+                dcc.Graph(id="correlation-heatmap",
+                figure = display_corr_heatmap())
+            ])
+        ])
     ])
 ]) #end of Container
 
@@ -213,7 +236,7 @@ def update_full_stats_graph(country, features):
 
     return fig
 
-
+# if you are looking for the correlation heatmap logic, it has been moved to above the app layout since a callback is not required
 
 
 
