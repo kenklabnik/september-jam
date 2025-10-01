@@ -128,6 +128,9 @@ app.layout = dbc.Container([
     dbc.Row([
         dbc.Col([
             html.H2("Full Stats By Country", className="text-center", style=SUBHEADER_STYLE),
+            html.P("""Note that these stats are standardized for a better viewing experience, which means the values were compressed so that the 
+                   mean is zero and the standard deviation is one. This is most obvious with GDP and life expectancy information.""",
+                   className="text-start fs-5", style=TEXT_BODY_STYLE),
             dcc.Dropdown(
                 id="full-stats-country-dropdown",
                 options=[{'label': country, 'value': country} for country in sorted(data['Country name'].unique())],
