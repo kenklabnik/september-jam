@@ -75,6 +75,12 @@ def truncate(number, places):
     
 # default countries for sample line graph
 countries = ["Finland", "India", "United States", "Afghanistan"]
+
+# list of features for dropdown
+feature_list = ['Log GDP per capita',
+    'Social support', 'Healthy life expectancy at birth',
+    'Freedom to make life choices', 'Generosity',
+    'Perceptions of corruption', 'Positive affect', 'Negative affect', 'Life Ladder']
     
 # load dataset
 data = pd.read_csv("World-happiness-report-updated_2024.csv",  encoding="latin1")
@@ -113,10 +119,31 @@ app.layout = dbc.Container([
                 options=[{'label': country, 'value': country} for country in sorted(data['Country name'].unique())],
                 value=countries,
                 multi=True,
-                placeholder="Or pick your own countries here...",
+                placeholder="Pick your countries here",
                 style=DROPDOWN_STYLE
             ),
             dcc.Graph(id="sample-country-graph")
+        ])
+    ]),
+    dbc.Row([
+        dbc.Col([
+            html.H2("Full Stats By Country", className="text-center", style=SUBHEADER_STYLE),
+            dcc.Dropdown(
+                id="full-stats-country-dropdown",
+                options=[{'label': country, 'value': country} for country in sorted(data['Country name'].unique())],
+                value="Canada",
+                placeholder="Pick a country",
+                style=DROPDOWN_STYLE
+            ),
+            dcc.Dropdown(
+                id="full-stats-features-dropdown",
+                options=[{'label': feature, 'value': feature} for feature in feature_list],
+                value=feature_list,
+                multi=True,
+                placeholder="Pick features to investigate",
+                style=DROPDOWN_STYLE
+            ),
+            dcc.Graph(id="full-stats-graph")
         ])
     ])
 ]) #end of Container
@@ -153,6 +180,37 @@ def update_sample_graph(countries):
 
     return fig
 
+# callback that updates "Full Country Stats" graph
+@app.callback(
+    Output("full-stats-graph", "figure"),
+    Input("full-stats-country-dropdown", "value"),
+    Input("full-stats-features-dropdown", "value")
+)
+def update_full_stats_graph(country, features):
+    if not country:
+        return px.line(title="Select a country.")
+    
+    sample_country = data[data["Country name"].isin([country])]
+    sample_country_scalable = sample_country.drop(['Country name', 'year'], axis=1)
+
+    scaler = StandardScaler()
+    scaled_data = pd.DataFrame(
+        scaler.fit_transform(sample_country_scalable),
+        columns=sample_country_scalable.columns,
+        index=sample_country_scalable.index)
+    
+    scaled_data['Country name'] = sample_country['Country name']
+    scaled_data['year'] = sample_country['year']
+
+
+    fig = px.line(
+        scaled_data,
+        x='year',
+        y=features,
+        title="Happiness Trends Over Time: {}".format(country)
+    )
+
+    return fig
 
 
 
