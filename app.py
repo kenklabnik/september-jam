@@ -60,6 +60,10 @@ DROPDOWN_STYLE = {
     'padding': '5px'
 }
 
+ROW_PADDING_STYLE = {
+    "padding": "8px"
+}
+
 # function for truncating floats later, from StackOverflow:
 def truncate(number, places):
     if not isinstance(places, int):
@@ -128,7 +132,9 @@ app.layout = dbc.Container([
                 ]),
             style=TITLE_CARD_STYLE, id="title-card")
         ], width=12)
-    ]),
+    ],  id="title-display-area",
+        style=ROW_PADDING_STYLE
+    ),
     dbc.Row([
         dbc.Col([
             html.H2("Happiness of Select Countries Over Time", className="text-center", style=SUBHEADER_STYLE),
@@ -142,7 +148,9 @@ app.layout = dbc.Container([
             ),
             dcc.Graph(id="sample-country-graph")
         ])
-    ]),
+        ],  id="sample-country-display-area",
+        style=ROW_PADDING_STYLE
+    ),
     dbc.Row([
         dbc.Col([
             html.H2("Full Stats By Country", className="text-center", style=SUBHEADER_STYLE),
@@ -166,7 +174,9 @@ app.layout = dbc.Container([
             ),
             dcc.Graph(id="full-stats-graph")
         ])
-    ]),
+    ],  id="full-stats-display-area",
+        style=ROW_PADDING_STYLE
+        ),
     dbc.Row([
         dbc.Col([
             html.H2("Correlation Heatmap", className="text-center", style=SUBHEADER_STYLE),
@@ -175,16 +185,32 @@ app.layout = dbc.Container([
                    a 0 indicates no correlation, and decimal values indicate correlations that are weak when close to 0 and strong when far from 0.
                    """,
                    className="text-start fs-5", style=TEXT_BODY_STYLE),
+            #nested column helps sort out a default size issue
             dbc.Col([
                 dcc.Graph(id="correlation-heatmap",
                 figure = display_corr_heatmap())
             ])
         ])
-    ])
+    ],  id="corr-heatmap-display-area",
+        style=ROW_PADDING_STYLE
+    ),
+    dbc.Row([
+        dbc.Col([
+            html.H2("Feature Importance", className="text-center", style=SUBHEADER_STYLE),
+            html.P("""
+                    We trained some machine learning models on this data, using pre-2019 data as our training features and target and post-2019 data as our test 
+                   features and target. Our best model, a CatBoost gradient boosting regressor, achieved a mean absolute error of about 0.32. This chart shows its SHAP 
+                   values. SHAP is "Shapley Additive Explanations", a metric that scores which features contributed most to the model's predictions. 
+                   """, className="text-start fs-5", style=TEXT_BODY_STYLE)
+        ]),
+        dbc.Col([
+            html.Img(src=app.get_asset_url('catboost_shap_graph.png'), style={"text-align": "center"})
+        ])
+    ],  id="shap-display-area",
+        style=ROW_PADDING_STYLE)
 ]) #end of Container
 
 # app reactivity logic
-# TODO any number of graphs we can come up with
 
 # callback that updates "Happiness of Select Countries Over Time" graph
 @app.callback(
