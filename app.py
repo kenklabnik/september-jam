@@ -49,6 +49,9 @@ ROW_PADDING_STYLE = {
     "padding": "8px"
 }
 
+GRAPH_HEIGHT = 100
+GRAPH_WIDTH = 12
+
 # function for truncating floats later, from StackOverflow:
 def truncate(number, places):
     if not isinstance(places, int):
@@ -131,7 +134,7 @@ app.layout = dbc.Container([
                 placeholder="Pick your countries here",
                 style=DROPDOWN_STYLE
             ),
-            dcc.Graph(id="sample-country-graph", height=12, width=12)
+            dcc.Graph(id="sample-country-graph", height=GRAPH_HEIGHT, width=GRAPH_WIDTH)
         ])
         ],  id="sample-country-display-area",
         style=ROW_PADDING_STYLE
@@ -157,7 +160,7 @@ app.layout = dbc.Container([
                 placeholder="Pick features to investigate",
                 style=DROPDOWN_STYLE
             ),
-            dcc.Graph(id="full-stats-graph", height=12, width=12)
+            dcc.Graph(id="full-stats-graph", height=GRAPH_HEIGHT, width=GRAPH_WIDTH)
         ])
     ],  id="full-stats-display-area",
         style=ROW_PADDING_STYLE
