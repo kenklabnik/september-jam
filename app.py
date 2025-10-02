@@ -49,7 +49,7 @@ ROW_PADDING_STYLE = {
     "padding": "8px"
 }
 
-GRAPH_HEIGHT = 100
+GRAPH_HEIGHT = 12
 GRAPH_WIDTH = 12
 
 # function for truncating floats later, from StackOverflow:
@@ -134,7 +134,7 @@ app.layout = dbc.Container([
                 placeholder="Pick your countries here",
                 style=DROPDOWN_STYLE
             ),
-            dcc.Graph(id="sample-country-graph", height=GRAPH_HEIGHT, width=GRAPH_WIDTH)
+            dcc.Graph(id="sample-country-graph")
         ])
         ],  id="sample-country-display-area",
         style=ROW_PADDING_STYLE
@@ -160,7 +160,7 @@ app.layout = dbc.Container([
                 placeholder="Pick features to investigate",
                 style=DROPDOWN_STYLE
             ),
-            dcc.Graph(id="full-stats-graph", height=GRAPH_HEIGHT, width=GRAPH_WIDTH)
+            dcc.Graph(id="full-stats-graph")
         ])
     ],  id="full-stats-display-area",
         style=ROW_PADDING_STYLE
@@ -224,7 +224,9 @@ def update_sample_graph(countries):
         y='Life Ladder',
         color='Country name',
         title="Happiness Trends Over Time",
-        labels={'Life Ladder': 'Life Ladder Score', 'year': 'Year', 'Country name': "Country"}
+        labels={'Life Ladder': 'Life Ladder Score', 'year': 'Year', 'Country name': "Country"},
+        height=GRAPH_HEIGHT,
+        width=GRAPH_WIDTH
     )
 
     return fig
@@ -245,7 +247,9 @@ def update_full_stats_graph(country, features):
         sample_country,
         x='year',
         y=features,
-        title="Happiness Trends Over Time: {}".format(country)
+        title="Happiness Trends Over Time: {}".format(country),
+        height=GRAPH_HEIGHT,
+        width=GRAPH_WIDTH
     )
 
     return fig
