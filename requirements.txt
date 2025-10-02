@@ -16,3 +16,4 @@ optuna   # for hyperparameter tuning
 # Render specific
 dash
 dash-bootstrap-components
+gunicorn
