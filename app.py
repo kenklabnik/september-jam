@@ -1,28 +1,13 @@
 # Import necessary libraries
-import re
-import os
-import random
+
 from decimal import Decimal, localcontext, ROUND_DOWN
-import sklearn
-import numpy as np
 import pandas as pd
-import seaborn as sns
 import plotly.express as px
-from scipy import stats as st
-from scipy import stats as st
-import matplotlib.pyplot as plt
 import warnings
 warnings.filterwarnings('ignore')
-from dash import Dash, html, dcc, callback, Output, Input, State
+from dash import Dash, html, dcc, callback, Output, Input
 import dash_bootstrap_components as dbc
-import spotipy
-from spotipy.oauth2 import SpotifyClientCredentials
-from scipy.spatial.distance import cdist
 from sklearn.preprocessing import StandardScaler
-from sklearn.preprocessing import MaxAbsScaler
-from sklearn.preprocessing import MinMaxScaler
-from sklearn.cluster import KMeans
-from sklearn.decomposition import PCA
 import plotly.express as px
 
 # color constants
