@@ -50,7 +50,7 @@ ROW_PADDING_STYLE = {
 }
 
 #GRAPH_HEIGHT fixes a bug with how Render calculates height, by hard-coding a pixel height
-GRAPH_HEIGHT = "600px"
+GRAPH_HEIGHT = "800px"
 
 # function for truncating floats later, from StackOverflow:
 def truncate(number, places):
