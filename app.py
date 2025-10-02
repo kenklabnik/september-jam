@@ -131,7 +131,7 @@ app.layout = dbc.Container([
                 placeholder="Pick your countries here",
                 style=DROPDOWN_STYLE
             ),
-            dcc.Graph(id="sample-country-graph")
+            dcc.Graph(id="sample-country-graph", height=12, width=12)
         ])
         ],  id="sample-country-display-area",
         style=ROW_PADDING_STYLE
@@ -157,7 +157,7 @@ app.layout = dbc.Container([
                 placeholder="Pick features to investigate",
                 style=DROPDOWN_STYLE
             ),
-            dcc.Graph(id="full-stats-graph")
+            dcc.Graph(id="full-stats-graph", height=12, width=12)
         ])
     ],  id="full-stats-display-area",
         style=ROW_PADDING_STYLE
