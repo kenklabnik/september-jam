@@ -248,9 +248,15 @@ def update_full_stats_graph(country, features):
     return fig
 
 # if you are looking for the correlation heatmap logic, it has been moved to above the app layout since a callback is not required
+# same with the feature importance graph, which is a static image
 
-
+# for Render
+server = app.server
 
 # Run the app
 if __name__ == '__main__':
-    app.run(debug=True, port=7124)
+    #for local hosting
+    #app.run(debug=True, port=7124)
+
+    #for Render hosting
+    app.run_server(debug=False)
