@@ -224,9 +224,8 @@ def update_sample_graph(countries):
         y='Life Ladder',
         color='Country name',
         title="Happiness Trends Over Time",
-        labels={'Life Ladder': 'Life Ladder Score', 'year': 'Year', 'Country name': "Country"},
-        height=GRAPH_HEIGHT,
-        width=GRAPH_WIDTH
+        labels={'Life Ladder': 'Life Ladder Score', 'year': 'Year', 'Country name': "Country"}, 
+        height=GRAPH_HEIGHT
     )
 
     return fig
@@ -247,9 +246,7 @@ def update_full_stats_graph(country, features):
         sample_country,
         x='year',
         y=features,
-        title="Happiness Trends Over Time: {}".format(country),
-        height=GRAPH_HEIGHT,
-        width=GRAPH_WIDTH
+        title="Happiness Trends Over Time: {}".format(country)
     )
 
     return fig
