@@ -50,8 +50,7 @@ ROW_PADDING_STYLE = {
 }
 
 #GRAPH_HEIGHT fixes a bug with how Render calculates height, by hard-coding a pixel height
-GRAPH_HEIGHT = 600
-GRAPH_WIDTH = 900
+GRAPH_HEIGHT = "600px"
 
 # function for truncating floats later, from StackOverflow:
 def truncate(number, places):
@@ -135,7 +134,7 @@ app.layout = dbc.Container([
                 placeholder="Pick your countries here",
                 style=DROPDOWN_STYLE
             ),
-            dcc.Graph(id="sample-country-graph")
+            dcc.Graph(id="sample-country-graph", style={"height": GRAPH_HEIGHT})
         ])
         ],  id="sample-country-display-area",
         style=ROW_PADDING_STYLE
@@ -161,7 +160,7 @@ app.layout = dbc.Container([
                 placeholder="Pick features to investigate",
                 style=DROPDOWN_STYLE
             ),
-            dcc.Graph(id="full-stats-graph")
+            dcc.Graph(id="full-stats-graph", style={"height": GRAPH_HEIGHT})
         ])
     ],  id="full-stats-display-area",
         style=ROW_PADDING_STYLE
@@ -230,10 +229,10 @@ def update_sample_graph(countries):
         labels={'Life Ladder': 'Life Ladder Score', 'year': 'Year', 'Country name': "Country"}
     )
 
-    fig.update_layout(
-        height=GRAPH_HEIGHT,
-        width=GRAPH_WIDTH
-    )
+    # fig.update_layout(
+    #     height=GRAPH_HEIGHT,
+    #     width=GRAPH_WIDTH
+    # )
 
     return fig
 
@@ -256,10 +255,10 @@ def update_full_stats_graph(country, features):
         title="Happiness Trends Over Time: {}".format(country)
     )
 
-    fig.update_layout(
-        height=GRAPH_HEIGHT,
-        width=GRAPH_WIDTH
-    )
+    # fig.update_layout(
+    #     height=GRAPH_HEIGHT,
+    #     width=GRAPH_WIDTH
+    # )
 
     return fig
 
