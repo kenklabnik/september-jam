@@ -49,8 +49,8 @@ ROW_PADDING_STYLE = {
     "padding": "8px"
 }
 
-GRAPH_HEIGHT = 400
-GRAPH_WIDTH = 12
+GRAPH_HEIGHT = 600
+GRAPH_WIDTH = 900
 
 # function for truncating floats later, from StackOverflow:
 def truncate(number, places):
