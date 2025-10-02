@@ -49,7 +49,7 @@ ROW_PADDING_STYLE = {
     "padding": "8px"
 }
 
-GRAPH_HEIGHT = 12
+GRAPH_HEIGHT = 400
 GRAPH_WIDTH = 12
 
 # function for truncating floats later, from StackOverflow:
@@ -196,7 +196,9 @@ app.layout = dbc.Container([
         ])
     ],  id="shap-display-area",
         style=ROW_PADDING_STYLE)
-]) #end of Container
+],
+    fluid=True
+) #end of Container
 
 # app reactivity logic
 
@@ -224,8 +226,12 @@ def update_sample_graph(countries):
         y='Life Ladder',
         color='Country name',
         title="Happiness Trends Over Time",
-        labels={'Life Ladder': 'Life Ladder Score', 'year': 'Year', 'Country name': "Country"}, 
-        height=GRAPH_HEIGHT
+        labels={'Life Ladder': 'Life Ladder Score', 'year': 'Year', 'Country name': "Country"}
+    )
+
+    fig.update_layout(
+        height=GRAPH_HEIGHT,
+        width=GRAPH_WIDTH
     )
 
     return fig
@@ -247,6 +253,11 @@ def update_full_stats_graph(country, features):
         x='year',
         y=features,
         title="Happiness Trends Over Time: {}".format(country)
+    )
+
+    fig.update_layout(
+        height=GRAPH_HEIGHT,
+        width=GRAPH_WIDTH
     )
 
     return fig
