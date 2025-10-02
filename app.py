@@ -50,9 +50,8 @@ ROW_PADDING_STYLE = {
 }
 
 #GRAPH_HEIGHT fixes a bug with how Render calculates height, by hard-coding a pixel height
-#GRAPH_WIDTH can be implemented the same way if needed, see where the former is used in callbacks
 GRAPH_HEIGHT = 600
-#GRAPH_WIDTH = 900
+GRAPH_WIDTH = 900
 
 # function for truncating floats later, from StackOverflow:
 def truncate(number, places):
@@ -232,7 +231,8 @@ def update_sample_graph(countries):
     )
 
     fig.update_layout(
-        height=GRAPH_HEIGHT
+        height=GRAPH_HEIGHT,
+        width=GRAPH_WIDTH
     )
 
     return fig
@@ -257,7 +257,8 @@ def update_full_stats_graph(country, features):
     )
 
     fig.update_layout(
-        height=GRAPH_HEIGHT
+        height=GRAPH_HEIGHT,
+        width=GRAPH_WIDTH
     )
 
     return fig
