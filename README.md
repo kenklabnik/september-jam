@@ -73,17 +73,9 @@ WORLD_HAPPINESS_PREDICTION/
 ├── data/
 │   └── World-happiness-report-updated_2024.csv
 ├── notebooks/
-│   ├── World_Happiness.ipynb
-│   └── World_Happiness_Optuna.ipynb
-├── src/
-│   ├── data.py         # loading & cleaning
-│   ├── features.py     # preprocessing, scaling
-│   ├── train.py        # training & evaluation
-│   ├── predict.py      # prediction function
-│   ├── viz.py          # plots and maps
-│   └── explain.py      # SHAP explanations
-├── app/
-│   └── streamlit_app.py  # optional demo
+│   ├── Sohini shap.ipynb
+│   └── ken_optuna.ipynb
+├── app.py   # optional demo
 ├── requirements.txt
 └── README.md
 ```
@@ -138,10 +130,10 @@ WORLD_HAPPINESS_PREDICTION/
 
 ## 📊 Example Results
 
-| Model              | MAE   | RMSE  | R²   |
-|--------------------|-------|-------|------|
-| Linear Regression  | ~0.55 | ~0.72 | 0.73 |
-| XGBoost (Optuna)   | ~0.43 | ~0.61 | 0.82 |
+| Model              | MAE   |
+|--------------------|-------|
+| Linear Regression  | ~0.39 | 
+| XGBoost (Optuna)   | ~0.32 | 
 
 **Insights:**
 - Social support and GDP per capita are top positive drivers
