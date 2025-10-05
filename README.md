@@ -103,8 +103,8 @@ SEPTEMBER-JAM/
 ├── data/
 │   └── World-happiness-report-updated_2024.csv
 ├── notebooks/
-│   ├── Analysis_using_shap.ipynb
-│   └── ken_optuna.ipynb
+│   ├── World-happiness-modelling_optuna.ipynb
+│   └── World-happiness-modelling.ipynb
 ├── app.py   # optional demo
 ├── requirements.txt
 └── README.md
