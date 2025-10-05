@@ -146,8 +146,8 @@ WORLD_HAPPINESS_PREDICTION/
 
 ### 1. Clone the repository
 ```bash
-git clone https://github.com/world-happiness-project.git
-cd world-happiness-project
+git clone https://github.com/september-jam.git
+cd september-jam
 ```
 2. Install dependencies
 ```
@@ -155,11 +155,11 @@ pip install -r requirements.txt
 ```
 4. Run Jupyter Notebook
 ```
-jupyter notebook notebooks/World_Happiness.ipynb
+jupyter notebook notebooks/World_happiness.ipynb
 ```
 6. Run Streamlit App
 ```
-streamlit run app/streamlit_app.py
+streamlit run app.py
 ```
 ## 📝 Notes
 
