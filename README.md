@@ -5,6 +5,36 @@ TripleTen Code Pudding for September 2025
 A data science project to **analyze global happiness trends** and **predict Life Ladder scores (0–10)** from social, economic, and health indicators.  
 This project demonstrates hands-on skills in **EDA, feature engineering, regression modeling, hyperparameter tuning, and interpretability**.
 
+# ⚙️ Hyperparameter Tuning with Optuna
+
+- To improve our model’s performance, we used Optuna, an automated hyperparameter optimization framework for machine learning.
+
+Optuna is an open-source Python library that automatically searches for the best hyperparameters (like learning rate, depth, or number of estimators) to maximize model accuracy or minimize error. Instead of manually guessing parameters, Optuna uses a smart search strategy called Tree-structured Parzen Estimator (TPE) to explore the parameter space efficiently.
+
+### How We Used It
+
+- We applied Optuna to tune our XGBoost model, which captures complex, nonlinear relationships in the happiness data.
+
+- Our objective function minimized the Root Mean Squared Error (RMSE) between predicted and actual happiness scores.
+
+- Optuna automatically:
+
+  - Sampled combinations of hyperparameters (e.g., learning_rate, max_depth, n_estimators, subsample, colsample_bytree)
+
+  - Evaluated model performance
+
+  - Selected the combination with the lowest RMSE score
+
+### Why Optuna?
+
+🚀 Efficient — Finds optimal parameters faster than grid or random search.
+
+🧠 Smart — Uses Bayesian optimization to focus on promising parameter regions.
+
+💡 Automated — Reduces manual trial-and-error and ensures reproducible, data-driven tuning.
+
+- After tuning, our XGBoost model achieved improved accuracy and generalization, helping us better identify which factors most strongly predict national happiness.
+
 ---
 
 ## 🚀 Project Overview
@@ -69,16 +99,17 @@ Together, these indicators make it ideal for exploring global trends and buildin
 ## 📂 Project Structure
 
 ```
-WORLD_HAPPINESS_PREDICTION/
+SEPTEMBER-JAM/
 ├── data/
 │   └── World-happiness-report-updated_2024.csv
 ├── notebooks/
-│   ├── Sohini shap.ipynb
+│   ├── Analysis_using_shap.ipynb
 │   └── ken_optuna.ipynb
 ├── app.py   # optional demo
 ├── requirements.txt
 └── README.md
 ```
+
 ## 📊 Dataset
 
 - **Source:** World Happiness Report (compiled indicators, 2005–2024)
@@ -87,6 +118,7 @@ WORLD_HAPPINESS_PREDICTION/
   - `Life Ladder` — Happiness score (0–10)
 
 **Features used:**
+
 - Log GDP per capita
 - Social support
 - Healthy life expectancy at birth
@@ -99,30 +131,34 @@ WORLD_HAPPINESS_PREDICTION/
 
 ---
 
-
 ## 📈 Workflow
 
 ### 🔹 Data Preparation
+
 - Handle missing values (drop or impute by year/region)
 - Scale numerical features with **StandardScaler**
 - Train/test split with **time-aware separation**
 
 ### 🔹 Exploratory Data Analysis (EDA)
+
 - Correlation heatmaps
 - Trends over time (2005–2024)
 - Choropleth maps of happiness by country
 
 ### 🔹 Modeling
+
 - **Linear Regression** (baseline)
 - **XGBoost** (nonlinear, feature interactions)
 - **Optuna** hyperparameter tuning
 
 ### 🔹 Evaluation
+
 - Metrics: **MAE, RMSE, R²**
 - Compare against **baseline predictor**
 - Residual analysis across regions and years
 
 ### 🔹 Prediction Function
+
 - **Input:** Python dict or DataFrame with features
 - **Output:** Predicted Life Ladder + top drivers (via SHAP)
 
@@ -130,12 +166,13 @@ WORLD_HAPPINESS_PREDICTION/
 
 ## 📊 Example Results
 
-| Model              | MAE   |
-|--------------------|-------|
-| Linear Regression  | ~0.39 | 
-| XGBoost (Optuna)   | ~0.32 | 
+| Model             | MAE   |
+| ----------------- | ----- |
+| Linear Regression | ~0.40 |
+| XGBoost (Optuna)  | ~0.33 |
 
 **Insights:**
+
 - Social support and GDP per capita are top positive drivers
 - Perceptions of corruption strongly suppress happiness
 - Emotional factors (positive/negative affect) add extra explanatory power
@@ -145,22 +182,30 @@ WORLD_HAPPINESS_PREDICTION/
 ## ⚙️ Installation & Usage
 
 ### 1. Clone the repository
+
 ```bash
-git clone https://github.com/september-jam.git
-cd september-jam
+git clone https://github.com/world-happiness-project.git
+cd world-happiness-project
 ```
+
 2. Install dependencies
+
 ```
 pip install -r requirements.txt
 ```
+
 4. Run Jupyter Notebook
+
 ```
-jupyter notebook notebooks/World_happiness.ipynb
+jupyter notebook notebooks/World_Happiness.ipynb
 ```
+
 6. Run Streamlit App
+
 ```
 streamlit run app.py
 ```
+
 ## 📝 Notes
 
 Happiness is influenced by many non-quantified factors (e.g., governance, culture, conflicts).
@@ -186,4 +231,3 @@ This project was developed by:
 - Sohini Tomar
 
 - Ryan Roberts
-
