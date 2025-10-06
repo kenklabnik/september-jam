@@ -212,6 +212,9 @@ Happiness is influenced by many non-quantified factors (e.g., governance, cultur
 
 Predictions are based only on available indicators.
 
+Deployment:
+The dashboard is deployed on Render and automatically updates with new commits to the main branch. Visit the live version at https://september-happiness-jam.onrender.com/
+
 ## Future improvements:
 
 - Add inequality indices, governance measures
